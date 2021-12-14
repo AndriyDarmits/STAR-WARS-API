@@ -1,10 +1,6 @@
 (function () {
-
-
-
     const btn = document.querySelector(".button");
     //const block = document.querySelector(".data-block");
-
     const personName = document.querySelector(".people__title");
     const height = document.querySelector("#height")
     const mass = document.querySelector("#mass")
@@ -22,9 +18,6 @@
     const edited = document.querySelector("#edited")
     const url = document.querySelector("#url")
 
-
-
-
     function getData() {
 
         let randomValue = Math.floor(Math.random() * 84);
@@ -41,9 +34,7 @@
             })
     }
 
-
     /* getData(); */
-
 
     function receiveError(err) {
         console.log('Something went wrong')
@@ -54,22 +45,17 @@
         for (let item in data) {
 
             if (data[item].length == 0) {
-
                 data[item] = 'EMPTY'
             }
 
             if (Array.isArray(data[item])) {
                 if (data[item].length > 1) {
-
                     for (let i = 0; i < data[item].length; i++) {
                         data[item][i] += "<br>";
-
                     }
                 }
-
             }
             /* console.log(data[item]) */
-
         }
 
         personName.innerHTML = data.name;
@@ -88,22 +74,14 @@
         created.innerHTML = data.created;
         edited.innerHTML = data.edited;
         url.innerHTML = data.url;
-
-
-
     }
 
     btn.addEventListener('click', getData)
-
-
 })();
 
 //=================================================SEARCH===========================================================================
 
 (function () {
-
-
-
     const searchButton = document.querySelector('.search__button');
     const inputValue = document.querySelector(".input__value");
     const submitResult = document.querySelector(".submitResult")
@@ -133,9 +111,6 @@
         console.log('Something went wrong')
     }
 
-
-
-
     function requestSearch(event) {
 
         let requestLink = 'https://swapi.dev/api/people/?search='
@@ -156,12 +131,6 @@
                     receiveError(err)
                 })
         }
-
-
-
-
-
-
     }
 
 
@@ -186,11 +155,8 @@
                         }
                     }
                 }
-
                 /* console.log(data[item]) */
             }
-
-
             personName.innerHTML = people.name;
             height.innerHTML = people.height;
             mass.innerHTML = people.mass;
@@ -207,11 +173,7 @@
             created.innerHTML = people.created;
             edited.innerHTML = people.edited;
             url.innerHTML = people.url;
-
-            console.log(event.target)
-
-            submitResult.removeEventListener("click", showResult); // для того, аби подія видалялася відразу після кліку(щоб не було прослушки, коли у нас список)
-
+            submitResult.removeEventListener("click", showResult); // In order to this event ti be removed at once after clicking 
         }
 
         let people;
@@ -224,17 +186,10 @@
             return;
 
         } else if (resp.length === 1) {
-
-
             people = resp[0];
-
             submitResult.innerHTML = people.name;
 
-
             submitResult.addEventListener("click", showResult);
-
-
-
         } else {
 
 
@@ -242,30 +197,18 @@
 
             resp.forEach(elem => {
 
-
                 const span = document.createElement('span');
                 span.style.display = "block";
                 span.innerHTML = elem.name;
                 submitResult.append(span)
 
                 searchBlock.style.display = 'none'
-
-
-
-
-
             })
         }
-
         inputValue.value = '';
         submitResult.style.display = 'block'
-
     }
-
-
     searchButton.addEventListener('click', requestSearch);
-
-
 })();
 
 
