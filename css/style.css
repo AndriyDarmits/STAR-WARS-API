@@ -45,7 +45,7 @@ a {
 }
 
 .wrapper {
-  background: url("/img/hb_disneyplus_skywalkersaga_19267_b5e1d940.jpeg") center no-repeat;
+  background: url("../img/hb_disneyplus_skywalkersaga_19267_b5e1d940.jpeg") center no-repeat;
   background-size: cover;
   width: 100%;
   height: 100vh;
